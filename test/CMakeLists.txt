@@ -1,0 +1,20 @@
+
+
+set(
+    TEST_INCLUDE_DIRS
+    ${GOOGLETEST_INCLUDE_DIRS}
+)
+
+set(
+    TARGET_LINK_LIBS
+    ${CMAKE_THREAD_LIBS_INIT}
+    ${GOOGLETEST_LIBRARIES} -lpthread
+)
+
+set(TARGET_TEST_DUMMY test_dummy)
+
+set(TARGET_TEST_DUMMY_SOURCES type_traits/test.cpp)
+add_executable(${TARGET_TEST_DUMMY} ${TARGET_TEST_DUMMY_SOURCES})
+target_include_directories(${TARGET_TEST_DUMMY} PRIVATE ${TEST_INCLUDE_DIRS})
+target_link_libraries(${TARGET_TEST_DUMMY} PRIVATE ${TARGET_LINK_LIBS})
+add_test(NAME ${TARGET_TEST_DUMMY} COMMAND ${TARGET_TEST_DUMMY})
