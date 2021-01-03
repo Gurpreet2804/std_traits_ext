@@ -23,7 +23,7 @@ message(VERBOSE "*")
 project(std_tarits_ext VERSION 0.1.0)
 
 # specify the C++ standard
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 
@@ -33,27 +33,27 @@ enable_testing()
 #
 # CMake configuration
 #
+# Local vars
 set(PROJECT_CMAKE_MODULES cmake/modules)
 set(PROJECT_DEPS_DIR deps)
 set(PROJECT_TEST_DIR test)
+set(PROJECT_SRC_DIR src)
 
 set(PROJECT_RUNTIME_OUTPUT_DIRECTORY bin)
 
+# Set Cmake vars
 set(
     CMAKE_MODULE_PATH
     ${CMAKE_MODULE_PATH}
     ${CMAKE_SOURCE_DIR}/${PROJECT_CMAKE_MODULES}
 )
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_RUNTIME_OUTPUT_DIRECTORY})
 
-#find_package(Threads REQUIRED)
 find_package(GoogleTest REQUIRED)
-
 
 if(${GOOGLETEST_FOUND})
     add_subdirectory(${PROJECT_TEST_DIR})
 endif(${GOOGLETEST_FOUND})
-
-add_executable(std_tarits_ext main.cpp)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
