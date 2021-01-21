@@ -15,8 +15,10 @@ It is build upon C++ existing functionalities.
 
 ## API's
 
-This library provides following API's, This library is a work in progress project.
-New functionalities will be added with time.
+This library provides following API's.
+This library is a work in progress, new functionalities will be added with time.
+
+Ref: [Reference](https://en.cppreference.com/w/cpp/types)
 
 #### Type Traits
 

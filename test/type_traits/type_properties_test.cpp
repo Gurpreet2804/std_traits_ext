@@ -7,10 +7,23 @@ struct A
 
 struct B
 {
+    void foo() {}
 };
 
 struct D : B
 {
+};
+
+struct V
+{
+    ~V(){};
+};
+
+struct POD
+{
+    char c;
+    int i;
+    float f;
 };
 
 using namespace traits;
@@ -35,4 +48,14 @@ TEST(TEST_LABEL, are_volatile)
     ASSERT_FALSE((are_volatile_v<volatile double, int, volatile float>));
     ASSERT_TRUE((are_volatile_v<volatile double,
                                 volatile int, volatile float>));
+}
+
+TEST(TEST_LABEL, are_trivial)
+{
+    ASSERT_EQ((are_trivial<A>::value), (are_trivial_v<A>));
+    ASSERT_TRUE((are_trivial_v<A>));
+    ASSERT_TRUE((are_trivial_v<int, char, float>));
+    ASSERT_TRUE((are_trivial_v<POD, int, char>));
+    ASSERT_FALSE((are_trivial_v<A, B, V, D>));
+    ASSERT_TRUE((are_trivial_v<A, int, B[], char[], D>));
 }
