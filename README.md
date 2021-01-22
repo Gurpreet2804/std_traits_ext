@@ -6,6 +6,10 @@ It is build upon C++ existing functionalities.
 
 ## Code Examples
 
+Examples for below mentioned functionalities are:
+
+* **are_const**
+
 ```cpp
     struct A { };
     struct B { };
@@ -20,9 +24,15 @@ This library is a work in progress, new functionalities will be added with time.
 
 Ref: [Reference](https://en.cppreference.com/w/cpp/types)
 
-#### Type Traits
+##### Type Properties
 
 * `are_const`
+* `are_volatile`
+* `are_trivial`
+
+##### Type Relationship
+
+* `is_first_same_of_any`
 
 ## Compile & Run
 

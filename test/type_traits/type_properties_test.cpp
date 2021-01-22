@@ -1,32 +1,11 @@
 #include "gtest/gtest.h"
+
 #include "type_properties.hpp"
-
-struct A
-{
-};
-
-struct B
-{
-    void foo() {}
-};
-
-struct D : B
-{
-};
-
-struct V
-{
-    ~V(){};
-};
-
-struct POD
-{
-    char c;
-    int i;
-    float f;
-};
+#include "types.h"
 
 using namespace traits;
+
+#define TEST_LABEL TYPE_PROPERTIES
 
 TEST(TEST_LABEL, are_const)
 {

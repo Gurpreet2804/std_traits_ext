@@ -20,5 +20,18 @@ namespace traits
         {
         };
 
+        template <template <typename, typename> class, typename...>
+        struct or_op;
+
+        template <template <typename, typename> class F, typename H, typename H1, typename... T>
+        struct or_op<F, H, H1, T...> : std::conditional_t<F<H, H1>::value, std::true_type, or_op<F, H, T...>>
+        {
+        };
+
+        template <template <typename, typename> class F, typename H>
+        struct or_op<F, H> : std::false_type
+        {
+        };
+
     } // namespace utilities
 } // namespace traits
