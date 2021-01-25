@@ -32,7 +32,12 @@ Ref: [Reference](https://en.cppreference.com/w/cpp/types)
 
 ##### Type Relationship
 
-* `is_first_same_of_any`
+* `is_same_of_any`
+* `is_same_of_all`
+* `is_base_of_any`
+* `is_base_of_all`
+* `are_all_base_of`
+* `is_convertible_to_any`
 
 ## Compile & Run
 
@@ -45,7 +50,7 @@ cmake ..
 make
 make test
 ```
-Note: *Use deps.sh for google test setup.*
+Note: *Use **deps.sh** for google test setup.*
 
 ## Author
 Gurpreet Singh [gurpreet2804](https://github.com/Gurpreet2804)

@@ -6,7 +6,6 @@ namespace traits
 {
     namespace utilities
     {
-
         template <template <typename...> class, typename...>
         struct and_op;
 
@@ -17,6 +16,32 @@ namespace traits
 
         template <template <typename> class F>
         struct and_op<F> : std::true_type
+        {
+        };
+
+        template <template <typename, typename> class, typename...>
+        struct and_op_1;
+
+        template <template <typename, typename> class F, typename H, typename H1, typename... T>
+        struct and_op_1<F, H, H1, T...> : std::conditional_t<F<H, H1>::value, and_op_1<F, H1, T...>, std::false_type>
+        {
+        };
+
+        template <template <typename, typename> class F, typename H>
+        struct and_op_1<F, H> : std::true_type
+        {
+        };
+
+        template <template <typename, typename> class, typename...>
+        struct and_op_2;
+
+        template <template <typename, typename> class F, typename H, typename H1, typename... T>
+        struct and_op_2<F, H, H1, T...> : std::conditional_t<F<H1, H>::value, and_op_2<F, H1, T...>, std::false_type>
+        {
+        };
+
+        template <template <typename, typename> class F, typename H>
+        struct and_op_2<F, H> : std::true_type
         {
         };
 

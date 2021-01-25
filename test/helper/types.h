@@ -13,6 +13,11 @@ struct D : B
 {
 };
 
+struct C
+{
+    operator A() { return A{}; }
+};
+
 struct V
 {
     ~V(){};
